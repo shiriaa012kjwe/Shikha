@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepshikha Raj — Marketing &amp; Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0f0e0c; --paper:#f7f4ef; --warm:#ede8df;
+  --accent:#9b6e4a; --gold:#b8913f; --mid:#7a7369;
+  --light:#c8c0b4; --rule:rgba(15,14,12,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+.cursor{width:8px;height:8px;background:var(--ink);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply}
+.cursor-ring{width:32px;height:32px;border:1px solid var(--ink);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0.3}
+.page-rule{position:fixed;top:0;bottom:0;left:80px;width:1px;background:var(--rule);z-index:400;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:80px 1fr auto;align-items:center;padding:24px 0;backdrop-filter:blur(12px);background:rgba(247,244,239,0.88)}
+.nav-vol{width:80px;font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--light);text-align:center}
+.nav-brand{padding-left:40px;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);text-decoration:none;letter-spacing:0.06em}
+.nav-links{display:flex;gap:36px;padding-right:60px;list-style:none}
+.nav-links a{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.25s}
+.nav-links a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:80px 1fr;padding-top:80px}
+.hero-sidebar{border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;min-height:100%}
+.sidebar-label{writing-mode:vertical-rl;transform:rotate(180deg);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--light)}
+.hero-body{display:grid;grid-template-columns:0.85fr 1.15fr;align-items:start}
+.hero-photo{position:relative;overflow:hidden;height:calc(100vh - 200px);max-height:820px;min-height:520px}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;filter:sepia(18%) contrast(1.04) brightness(0.93) saturate(0.85)}
+.hero-photo-frame{position:absolute;inset:12px;border:1px solid rgba(155,110,74,0.28);pointer-events:none;z-index:2}
+.hero-photo-tag{position:absolute;bottom:20px;left:20px;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(247,244,239,0.6);background:rgba(15,14,12,0.45);padding:6px 12px;backdrop-filter:blur(4px);z-index:3}
+.hero-text{padding:60px 64px 0 56px;display:flex;flex-direction:column;justify-content:flex-start;border-left:1px solid var(--rule)}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:up 1s 0.4s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,6rem);font-weight:400;line-height:0.95;margin-bottom:36px;opacity:0;animation:up 1s 0.55s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-name em{display:inline;font-style:italic;color:var(--accent)}
+.hero-right{border-top:1px solid var(--rule);padding-top:28px;opacity:0;animation:up 1s 0.7s cubic-bezier(0.16,1,0.3,1) forwards}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2vw,1.75rem);font-style:italic;font-weight:300;line-height:1.5;color:var(--mid);margin-bottom:20px}
+.hero-tagline strong{color:var(--ink);font-style:normal;font-weight:500}
+.hero-intro{font-size:0.88rem;line-height:1.85;color:var(--mid)}
+.hero-stats-inline{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-top:32px;opacity:0;animation:up 1s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;flex-shrink:0}
+.h-stat-i{background:var(--paper);padding:22px 22px;transition:background 0.25s}
+.h-stat-i:hover{background:var(--warm)}
+.h-stat-fig{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:400;line-height:1;color:var(--ink)}
+.h-stat-lbl{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-top:8px}
+.hero-strip{display:flex;align-items:center;gap:18px;padding:14px 0;border-top:1px solid var(--rule);margin-top:1px;opacity:0;animation:up 1s 1.1s cubic-bezier(0.16,1,0.3,1) forwards}
+.e-rule{flex:1;height:1px;background:var(--rule)}
+.e-text{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--light);white-space:nowrap}
+.s-shell{display:grid;grid-template-columns:80px 1fr;border-top:1px solid var(--rule)}
+.s-sidebar{border-right:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:center;padding-top:64px}
+.s-sidebar span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--light)}
+.s-inner{padding:64px 80px 64px 60px;border-left:1px solid var(--rule)}
+.s-label{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.s-heading{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4.2vw,4.2rem);font-weight:400;line-height:1.02;margin-bottom:40px}
+.s-heading em{font-style:italic;color:var(--accent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about-grid > div:first-child{position:sticky;top:120px;align-self:start}
+.about-body{font-size:0.92rem;line-height:1.9;color:var(--mid)}
+.about-body strong{color:var(--ink);font-weight:500}
+.about-body p+p{margin-top:1.4em}
+.skill-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:4px}
+.skill-card{background:var(--paper);padding:24px 20px 20px;position:relative;overflow:hidden;transition:background 0.3s;cursor:none}
+.skill-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+.skill-card:hover{background:var(--warm)}
+.skill-card:hover::after{transform:scaleY(1)}
+.skill-card-icon{color:var(--accent);margin-bottom:12px;display:block}
+.skill-card-ghost{position:absolute;top:8px;right:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.4rem;color:rgba(15,14,12,0.055);line-height:1;pointer-events:none}
+.skill-card-name{font-size:0.7rem;letter-spacing:0.12em;font-weight:500;color:var(--ink);text-transform:uppercase;margin-bottom:8px;line-height:1.45}
+.skill-card-desc{font-size:0.76rem;line-height:1.68;color:var(--mid)}
+.case-hero{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--rule);margin-bottom:2px;opacity:0;transform:translateY(28px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.case-hero.visible{opacity:1;transform:translateY(0)}
+.case-hero-left{background:var(--warm);padding:56px 52px;display:flex;flex-direction:column;justify-content:space-between;min-height:420px;position:relative;overflow:hidden}
+.case-hero-left::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(15,14,12,0.05) 59px,rgba(15,14,12,0.05) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(15,14,12,0.05) 59px,rgba(15,14,12,0.05) 60px);pointer-events:none}
+.case-tag{font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);z-index:1}
+.case-hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:400;line-height:1.02;z-index:1}
+.case-hero-title em{font-style:italic;color:var(--accent);display:block}
+.case-hero-right{background:var(--ink);color:var(--paper);padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between}
+.case-right-tag{font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(232,223,200,0.4);margin-bottom:18px}
+.case-right-desc{font-size:0.88rem;line-height:1.85;color:rgba(232,223,200,0.72);flex:1}
+.case-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin-top:32px;background:rgba(255,255,255,0.08)}
+.c-metric{background:var(--ink);padding:18px 16px}
+.c-metric-val{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--paper);line-height:1}
+.c-metric-lbl{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(232,223,200,0.38);margin-top:7px}
+.case-sm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.case-sm{background:var(--warm);padding:44px 40px;border:1px solid var(--rule);position:relative;cursor:none;opacity:0;transform:translateY(20px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.case-sm.visible{opacity:1;transform:translateY(0)}
+.case-sm:hover{background:var(--paper)}
+.case-sm-tag{font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.case-sm-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:400;line-height:1.1;margin-bottom:14px}
+.case-sm-desc{font-size:0.85rem;line-height:1.82;color:var(--mid)}
+.case-sm-arrow{position:absolute;bottom:28px;right:32px;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--light);transition:all 0.3s}
+.case-sm:hover .case-sm-arrow{color:var(--accent);transform:translate(4px,-4px)}
+.work-subhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.work-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--mid);max-width:280px;line-height:1.65;text-align:right}
+.exp-row{display:grid;grid-template-columns:130px 1px 1fr 120px;gap:0 32px;padding:36px 0;border-bottom:1px solid var(--rule);opacity:0;transform:translateY(16px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1)}
+.exp-row.visible{opacity:1;transform:translateY(0)}
+.exp-yr{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--mid);padding-top:4px;line-height:1.5}
+.exp-vline{background:var(--rule);position:relative}
+.exp-vline::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--paper),0 0 0 3px rgba(155,110,74,0.35)}
+.exp-type{display:inline-block;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--paper);background:var(--accent);padding:3px 9px;margin-bottom:10px}
+.exp-type.alt{background:transparent;color:var(--accent);border:1px solid rgba(155,110,74,0.4)}
+.exp-role{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;line-height:1.1;margin-bottom:6px}
+.exp-co{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:13px}
+.exp-desc{font-size:0.86rem;line-height:1.85;color:var(--mid);max-width:560px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.exp-tag{font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--mid);border:1px solid var(--rule);padding:4px 9px;background:rgba(15,14,12,0.03);transition:all 0.2s}
+.exp-tag:hover{border-color:var(--accent);color:var(--accent)}
+.exp-visual{display:flex;align-items:flex-start;justify-content:center;padding-top:4px}
+.exp-proof-pair{display:flex;flex-direction:column;gap:10px;width:104px}
+.exp-proof{width:104px;border:1px solid rgba(15,14,12,0.14);overflow:hidden;flex-shrink:0;transition:transform 0.38s cubic-bezier(0.16,1,0.3,1),box-shadow 0.38s}
+.exp-proof:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(15,14,12,0.11)}
+.epc-bar{height:3px;width:100%;display:block}
+.epc-body{padding:13px 12px 12px}
+.epc-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400;line-height:1;display:block;margin-bottom:8px}
+.epc-label{font-family:'Jost',sans-serif;font-size:0.46rem;letter-spacing:0.2em;text-transform:uppercase;display:block;line-height:1.6;font-weight:400}
+/* === IMPACT CARD COLORS — strictly warm earth palette === */
+/* 1 — Dark Store: deep ink + gold */
+.epc-1{background:#0f0e0c}.epc-1 .epc-bar{background:#b8913f}.epc-1 .epc-num{color:#e8d2af}.epc-1 .epc-label{color:rgba(232,210,175,0.42)}
+.epc-1b{background:#f5ecd8}.epc-1b .epc-bar{background:#b8913f}.epc-1b .epc-num{color:#5a3c0a}.epc-1b .epc-label{color:#9a7a40}
+/* 2 — Partnerships: warm paper + accent */
+.epc-2{background:#f7f4ef}.epc-2 .epc-bar{background:#9b6e4a}.epc-2 .epc-num{color:#9b6e4a;font-style:italic}.epc-2 .epc-label{color:#b0988a}
+.epc-2b{background:#1a1208}.epc-2b .epc-bar{background:#9b6e4a}.epc-2b .epc-num{color:#d4b090}.epc-2b .epc-label{color:rgba(212,176,144,0.42)}
+/* 3 — StellarCode: warm midtone + gold */
+.epc-3{background:#ede8df}.epc-3 .epc-bar{background:#b8913f}.epc-3 .epc-num{color:#3d3020}.epc-3 .epc-label{color:#8a7860}
+.epc-3b{background:#d8d0c4}.epc-3b .epc-bar{background:#9b6e4a}.epc-3b .epc-num{color:#2a1e10}.epc-3b .epc-label{color:#7a6850}
+/* 4 — BrandMagix: deep warm brown + accent */
+.epc-4{background:#2e1e10}.epc-4 .epc-bar{background:#9b6e4a}.epc-4 .epc-num{color:#d4b896}.epc-4 .epc-label{color:rgba(212,184,150,0.42)}
+.epc-4b{background:#f0e8d8}.epc-4b .epc-bar{background:#b8913f}.epc-4b .epc-num{color:#4a3010}.epc-4b .epc-label{color:#9a8060}
+/* 5 — StockGro: parchment + gold */
+.epc-5{background:#f2ece0}.epc-5 .epc-bar{background:#b8913f}.epc-5 .epc-num{color:#4a3510}.epc-5 .epc-label{color:#9a8060}
+.epc-5b{background:#e0d8c8}.epc-5b .epc-bar{background:#9b6e4a}.epc-5b .epc-num{color:#3a2810}.epc-5b .epc-label{color:#8a7258}
+/* 6 — Kaleidoscope: rich amber-ink + gold */
+.epc-6{background:#241408}.epc-6 .epc-bar{background:#b8913f}.epc-6 .epc-num{color:#e0c080}.epc-6 .epc-label{color:rgba(224,192,128,0.42)}
+.epc-6b{background:#f4ead6}.epc-6b .epc-bar{background:#9b6e4a}.epc-6b .epc-num{color:#4a3418}.epc-6b .epc-label{color:#9a7848}
+/* 7 — Hygaar: warm linen + accent */
+.epc-7{background:#ece2d0}.epc-7 .epc-bar{background:#9b6e4a}.epc-7 .epc-num{color:#3a2414}.epc-7 .epc-label{color:#8a6a50}
+.epc-7b{background:#281a08}.epc-7b .epc-bar{background:#b8913f}.epc-7b .epc-num{color:#d8bc90}.epc-7b .epc-label{color:rgba(216,188,144,0.42)}
+/* 8 — Perf Lead: deep warm brown + gold */
+.epc-8{background:#1c1008}.epc-8 .epc-bar{background:#b8913f}.epc-8 .epc-num{color:#dcc890}.epc-8 .epc-label{color:rgba(220,200,144,0.42)}
+.epc-8b{background:#f0e6d0}.epc-8b .epc-bar{background:#b8913f}.epc-8b .epc-num{color:#4a3820}.epc-8b .epc-label{color:#9a8060}
+/* 9 — Geek Gazette: warm sand + accent */
+.epc-9{background:#e8dcc8}.epc-9 .epc-bar{background:#9b6e4a}.epc-9 .epc-num{color:#2e1e0c}.epc-9 .epc-label{color:#7a6448}
+.epc-9b{background:#201408}.epc-9b .epc-bar{background:#b8913f}.epc-9b .epc-num{color:#d4b478}.epc-9b .epc-label{color:rgba(212,180,120,0.42)}
+footer{background:#100d08;border-top:1px solid rgba(184,145,63,0.28)}
+.footer-top{display:grid;grid-template-columns:1fr 1fr;gap:72px;padding:60px 80px 52px;position:relative}
+.footer-top::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.016) 59px,rgba(255,255,255,0.016) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.016) 59px,rgba(255,255,255,0.016) 60px);pointer-events:none}
+.footer-cta-label{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(184,145,63,0.55);display:block;margin-bottom:22px}
+.footer-cta-heading{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.6vw,4rem);font-weight:400;line-height:1.04;color:var(--paper)}
+.footer-cta-heading em{font-style:italic;color:#c4966a}
+.footer-cta-sub{margin-top:24px;font-size:0.82rem;line-height:1.8;color:rgba(247,244,239,0.35);font-family:'Cormorant Garamond',serif;font-style:italic}
+.footer-links{display:flex;flex-direction:column;gap:0;justify-content:center;position:relative}
+.f-link{display:flex;align-items:center;gap:18px;padding:18px 4px;border-bottom:1px solid rgba(247,244,239,0.07);text-decoration:none;color:var(--paper);transition:padding-left 0.3s cubic-bezier(0.16,1,0.3,1),background 0.3s;position:relative;overflow:hidden}
+.f-link:first-child{border-top:1px solid rgba(247,244,239,0.07)}
+.f-link::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:#c4966a;transform:scaleY(0);transform-origin:bottom;transition:transform 0.32s cubic-bezier(0.16,1,0.3,1)}
+.f-link:hover{padding-left:14px;background:rgba(184,145,63,0.05)}
+.f-link:hover::before{transform:scaleY(1)}
+.f-link-icon{width:38px;height:38px;border:1px solid rgba(247,244,239,0.1);display:flex;align-items:center;justify-content:center;color:#c4966a;flex-shrink:0;transition:background 0.3s,border-color 0.3s}
+.f-link:hover .f-link-icon{background:rgba(184,145,63,0.14);border-color:rgba(196,150,106,0.5)}
+.f-link-info{flex:1}
+.f-link-label{font-size:0.52rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(247,244,239,0.28);display:block;margin-bottom:4px}
+.f-link-val{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:rgba(247,244,239,0.82);display:block;transition:color 0.25s}
+.f-link:hover .f-link-val{color:#d4aa80}
+.f-link-arr{font-size:1rem;color:rgba(184,145,63,0.3);transition:all 0.3s;flex-shrink:0}
+.f-link:hover .f-link-arr{color:#c4966a;transform:translate(4px,-4px)}
+.footer-base{display:flex;justify-content:space-between;align-items:center;padding:13px 80px;border-top:1px solid rgba(247,244,239,0.055);background:rgba(0,0,0,0.22)}
+.footer-base-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.88rem;color:rgba(184,145,63,0.48);letter-spacing:0.06em}
+.footer-base-copy{font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(247,244,239,0.16)}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:960px){
+  .page-rule{display:none}
+  nav{grid-template-columns:1fr auto;padding:18px 24px}
+  .nav-vol{display:none}
+  .nav-brand{padding-left:0}
+  .nav-links{padding-right:0;gap:20px}
+  .nav-links a{font-size:0.65rem}
+  .hero{grid-template-columns:1fr;padding-top:72px}
+  .hero-sidebar{display:none}
+  .hero-body{grid-template-columns:1fr}
+  .hero-photo{height:60vw;max-height:400px;min-height:260px}
+  .hero-text{padding:36px 24px 32px;border-left:none}
+  .hero-stats-inline{grid-template-columns:1fr 1fr}
+  .s-shell{grid-template-columns:1fr}
+  .s-sidebar{display:none}
+  .s-inner{padding:52px 24px;border-left:none}
+  .about-grid{grid-template-columns:1fr;gap:44px}
+  .skill-cards{grid-template-columns:1fr 1fr}
+  .case-hero{grid-template-columns:1fr}
+  .case-hero-left{min-height:280px}
+  .case-sm-grid{grid-template-columns:1fr}
+  .exp-row{grid-template-columns:90px 1px 1fr;gap:0 20px}
+  .exp-visual{display:none}
+  .work-subhead{flex-direction:column;align-items:flex-start;gap:16px}
+  .work-quote{text-align:left}
+  .footer-top{grid-template-columns:1fr;gap:40px;padding:44px 24px 36px}
+  .footer-base{padding:12px 24px;flex-direction:column;gap:5px;text-align:center}
+}
+
+/* === SKILLS SECTION === */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--rule);margin-top:40px}
+.skill-group{background:var(--paper);padding:32px 28px;transition:background 0.3s;position:relative;overflow:hidden}
+.skill-group:hover{background:var(--warm)}
+.skill-group-accent{position:absolute;top:0;left:0;right:0;height:3px}
+.skill-group-title{font-size:0.72rem;letter-spacing:0.18em;font-weight:500;color:var(--ink);text-transform:uppercase;margin-bottom:16px;margin-top:8px}
+.skill-group-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-pill{font-size:0.62rem;letter-spacing:0.08em;color:var(--mid);border:1px solid var(--rule);padding:4px 10px;background:rgba(15,14,12,0.03);transition:all 0.2s;line-height:1.4}
+.skill-pill:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:960px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.skills-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-rule"></div>
+<nav>
+  <div class="nav-vol">Portfolio</div>
+  <a href="#top" class="nav-brand">Deepshikha Raj</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-sidebar"><span class="sidebar-label">Marketing · Content · Growth</span></div>
+  <div class="hero-body">
+    <div class="hero-photo">
+      <img src="shikha-photo.jpg" alt="Deepshikha Raj — Brand Strategist">
+      <div class="hero-photo-frame"></div>
+      <span class="hero-photo-tag">IIT Roorkee · 2025</span>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Marketing &amp; Growth | IIT Roorkee</p>
+      <h1 class="hero-name">Deepshikha <em>Raj.</em></h1>
+      <div class="hero-right">
+        <p class="hero-tagline">I run campaigns, build content, and help brands reach the right people.</p>
+        <p class="hero-intro">Based at IIT Roorkee. I've worked across 7+ internships in marketing, running ads, building content, and helping brands grow.</p>
+      </div>
+      <div class="hero-stats-inline">
+        <div class="h-stat-i"><div class="h-stat-fig">50K+</div><div class="h-stat-lbl">Ad Campaign Reach</div></div>
+        <div class="h-stat-i"><div class="h-stat-fig">9,000+</div><div class="h-stat-lbl">Gathered Direct Contacts</div></div>
+        <div class="h-stat-i"><div class="h-stat-fig">7+</div><div class="h-stat-lbl">Internships &amp; Roles</div></div>
+        <div class="h-stat-i"><div class="h-stat-fig">3+</div><div class="h-stat-lbl">Brand Collaborations</div></div>
+      </div>
+      <div class="hero-strip">
+        <div class="e-rule"></div>
+        <span class="e-text">Strategy · Execution · Results</span>
+        <div class="e-rule"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="s-shell" id="about">
+  <div class="s-sidebar"><span>About</span></div>
+  <div class="s-inner">
+    <p class="s-label">// About</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="s-heading">A bit<br>about<br><em>me.</em></h2>
+        <div class="about-body">
+          <p>I'm a marketing student at IIT Roorkee with hands-on experience across 7+ internships. I've worked on social media strategy, Meta and Google Ads, email campaigns, community building, and market research — mostly for startups and campus brands.</p>
+          <p>I like starting with research — understanding the audience and competition — before jumping into execution. I've used tools like Meta Ads Manager, Google Analytics, HubSpot, Canva, Zoho, and Brevo across different projects.</p>
+          <p>I'm comfortable working independently and figuring things out as I go.</p>
+        </div>
+      </div>
+      <div>
+        <p class="s-label" style="margin-bottom:18px">// Expertise</p>
+        <div class="skill-cards">
+
+          <!-- 01 Brand Strategy & Positioning -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">01</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="19,3 35,14 19,35 3,14"/><line x1="3" y1="14" x2="35" y2="14"/><line x1="19" y1="3" x2="11" y2="14"/><line x1="19" y1="3" x2="27" y2="14"/><circle cx="19" cy="14" r="2.5" fill="currentColor" stroke="none"/></svg>
+            <div class="skill-card-name">Brand Strategy<br>&amp; Positioning</div>
+            <div class="skill-card-desc">Helping brands figure out their identity and how to stand out to their target audience.</div>
+          </div>
+
+          <!-- 02 Marketing & Partnerships -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">02</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="13" cy="19" r="10"/><circle cx="25" cy="19" r="10"/></svg>
+            <div class="skill-card-name">Marketing<br>&amp; Partnerships</div>
+            <div class="skill-card-desc">Working with other brands or creators to grow reach and visibility together.</div>
+          </div>
+
+          <!-- 03 Performance Marketing & Analytics (combined 3+8) -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">03</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,32 13,22 20,25 32,7"/><polyline points="26,7 32,7 32,13"/><line x1="4" y1="34" x2="34" y2="34"/><circle cx="19" cy="19" r="5" stroke-dasharray="3 2"/></svg>
+            <div class="skill-card-name">Performance Marketing<br>&amp; Analytics</div>
+            <div class="skill-card-desc">Running Meta and Google Ads, testing what works, and tracking results using GA4 and UTM links.</div>
+          </div>
+
+          <!-- 04 Influencer & Creator Marketing -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">04</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="19,3 22.5,13.5 34,13.5 24.8,20 28,31 19,24.5 10,31 13.2,20 4,13.5 15.5,13.5"/></svg>
+            <div class="skill-card-name">Influencer<br>&amp; Creator Marketing</div>
+            <div class="skill-card-desc">Coordinating with campus creators — writing briefs, planning content, and tracking how it performs.</div>
+          </div>
+
+          <!-- 05 Campaign Strategy & Market Activation (combined 5+6) -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">05</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4,8 L34,8 L23,22 L23,34 L15,30 L15,22 Z"/><path d="M19,5 C15,5 13,8 13,11 C13,16 19,22 19,22 C19,22 25,16 25,11 C25,8 23,5 19,5Z" opacity="0.4"/></svg>
+            <div class="skill-card-name">Campaign Strategy<br>&amp; Market Activation</div>
+            <div class="skill-card-desc">Planning campaigns end-to-end — from figuring out the audience to running on-ground activations.</div>
+          </div>
+
+          <!-- 06 Social Media & Content Strategy -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">06</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="30" height="26" rx="2"/><line x1="4" y1="14" x2="34" y2="14"/><line x1="12" y1="6" x2="12" y2="14"/><line x1="26" y1="6" x2="26" y2="14"/><line x1="10" y1="22" x2="28" y2="22"/><line x1="10" y1="28" x2="22" y2="28"/></svg>
+            <div class="skill-card-name">Social Media<br>&amp; Content Strategy</div>
+            <div class="skill-card-desc">Managing LinkedIn and Instagram content — writing posts, planning calendars, and making Reels.</div>
+          </div>
+
+          <!-- 07 CRM & Sales Enablement -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">07</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="30" height="22" rx="2"/><polyline points="4,10 19,22 34,10"/><line x1="4" y1="28" x2="12" y2="20"/><line x1="34" y1="28" x2="26" y2="20"/></svg>
+            <div class="skill-card-name">CRM &amp; Sales<br>Enablement</div>
+            <div class="skill-card-desc">Setting up email sequences and outreach using tools like HubSpot, Zoho, and Brevo.</div>
+          </div>
+
+          <!-- 08 Tools & No-Code Automation -->
+          <div class="skill-card">
+            <span class="skill-card-ghost">08</span>
+            <svg class="skill-card-icon" width="36" height="36" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="13" height="13" rx="1"/><rect x="21" y="4" width="13" height="13" rx="1"/><rect x="4" y="21" width="13" height="13" rx="1"/><path d="M21 27.5 h13 M27.5 21 v13"/></svg>
+            <div class="skill-card-name">Tools &amp; No-Code<br>Automation</div>
+            <div class="skill-card-desc">Using tools like Canva, Zapier, and landing page builders to get things done without needing a developer.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- WORK -->
+<div class="s-shell" id="work">
+  <div class="s-sidebar"><span>Selected Work</span></div>
+  <div class="s-inner">
+    <p class="s-label">// Selected Work</p>
+    <div class="work-subhead">
+      <h2 class="s-heading" style="margin-bottom:0">Case<br><em>Studies.</em></h2>
+      <p class="work-quote">"Here are a few projects I worked on and what I actually did."</p>
+    </div>
+    <div class="case-hero reveal-item">
+      <div class="case-hero-left">
+        <span class="case-tag">Flagship Campaign · 2025</span>
+        <div class="case-hero-title">Dark Store<br><em>× Cognizance</em><br>IIT Roorkee</div>
+      </div>
+      <div class="case-hero-right">
+        <div>
+          <div class="case-right-tag">Market Penetration · Brand Partnership · On-Ground Activation</div>
+          <p class="case-right-desc">Handled marketing for streetwear brand Dark Store at IIT Roorkee's Cognizance tech fest (50,000+ expected visitors). Got the brand's merch listed on the official fest website, ran email and WhatsApp campaigns to 9,000+ contacts, and managed stall placement and on-ground visibility across campus.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="c-metric"><div class="c-metric-val">50K+</div><div class="c-metric-lbl">Event Visitors</div></div>
+          <div class="c-metric"><div class="c-metric-val">9K+</div><div class="c-metric-lbl">Outreach Contacts</div></div>
+          <div class="c-metric"><div class="c-metric-val">&lt;20%</div><div class="c-metric-lbl">Commission</div></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!-- EXPERIENCE -->
+<div class="s-shell" id="experience">
+  <div class="s-sidebar"><span>Experience</span></div>
+  <div class="s-inner">
+    <p class="s-label">// Experience</p>
+    <h2 class="s-heading">The<br><em>Timeline.</em></h2>
+
+    <!-- 1. Dark Store -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2025 —<br>Present</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Full-time</span>
+        <div class="exp-role">Campus Marketing Director</div>
+        <div class="exp-co">Dark Store × Cognizance · IIT Roorkee</div>
+        <p class="exp-desc">Managed the full marketing setup for Dark Store at Cognizance fest. This included getting co-branded merch on the fest website, running email and WhatsApp outreach to 9,000+ contacts, and handling stall setup and on-ground visibility across campus.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Brand Partnership</span><span class="exp-tag">Campus Activation</span>
+          <span class="exp-tag">Email &amp; WhatsApp</span><span class="exp-tag">Zone Mapping</span>
+          <span class="exp-tag">Co-branded Merch</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-1"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">50K+</span><span class="epc-label">Campaign<br>Reach</span></div></div>
+        <div class="exp-proof epc-1b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">9K+</span><span class="epc-label">Direct<br>Contacts</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 3. StellarCode -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2024</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Internship</span>
+        <div class="exp-role">Marketing Manager Intern</div>
+        <div class="exp-co">StellarCode · Remote</div>
+        <p class="exp-desc">Managed LinkedIn and Instagram content for a B2B SaaS brand. Built a 90-day content calendar, grew LinkedIn followers by 800+, and helped improve creatives to support lead generation.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">LinkedIn Strategy</span><span class="exp-tag">Instagram</span>
+          <span class="exp-tag">B2B SaaS</span><span class="exp-tag">Content Calendar</span>
+          <span class="exp-tag">Lead Generation</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-3"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">800+</span><span class="epc-label">Followers<br>Gained</span></div></div>
+        <div class="exp-proof epc-3b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">2×</span><span class="epc-label">Engagement<br>Rate</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 4. BrandMagix -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2024</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Internship</span>
+        <div class="exp-role">Founder's Office Marketing Intern</div>
+        <div class="exp-co">BrandMagix · Remote</div>
+        <p class="exp-desc">Managed Meta and Google Ads for 5+ client accounts. Ran A/B tests that improved CTR by 38% and reduced cost-per-click by 24%. Also handled social media content for sub-brand QuicFlow during their product launch.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Meta Ads</span><span class="exp-tag">Google Ads</span>
+          <span class="exp-tag">A/B Testing</span><span class="exp-tag">Social Media Mgmt</span>
+          <span class="exp-tag">Canva · AI Tools</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-4"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">↑38%</span><span class="epc-label">CTR<br>Improved</span></div></div>
+        <div class="exp-proof epc-4b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">5+</span><span class="epc-label">Ad<br>Accounts</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 5. StockGro -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2023 —<br>2024</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Internship</span>
+        <div class="exp-role">Community Growth &amp; Marketing Intern</div>
+        <div class="exp-co">StockGro · Remote</div>
+        <p class="exp-desc">Grew the Women in Money community by 300+ members through finance quizzes and engagement events. Worked on retention by creating educational content and discussions, which helped increase daily active users by 35%.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Community Strategy</span><span class="exp-tag">Content Marketing</span>
+          <span class="exp-tag">Retention Design</span><span class="exp-tag">EdTech · Finance</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-5"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">300+</span><span class="epc-label">Members<br>Added</span></div></div>
+        <div class="exp-proof epc-5b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">35%</span><span class="epc-label">DAU<br>Growth</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 6. Kaleidoscope -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2023</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Internship</span>
+        <div class="exp-role">Marketing &amp; Outreach Intern</div>
+        <div class="exp-co">Kaleidoscope Consulting Pvt. Ltd · Remote</div>
+        <p class="exp-desc">Did email and LinkedIn outreach to build a prospect pipeline. Wrote scripts for client acquisition and helped improve response rates.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Email Outreach</span><span class="exp-tag">LinkedIn Prospecting</span>
+          <span class="exp-tag">Cold Emailing</span><span class="exp-tag">Sales Scripts</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-6"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">↑</span><span class="epc-label">Response<br>Rate</span></div></div>
+        <div class="exp-proof epc-6b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">B2B</span><span class="epc-label">Pipeline<br>Built</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 7. Hygaar -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2023</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Internship</span>
+        <div class="exp-role">Market Research Intern</div>
+        <div class="exp-co">Hygaar · Remote</div>
+        <p class="exp-desc">Researched 100+ brands across the GenAI and fashion-tech space — looking at pricing, positioning, and market trends. Made dashboards to share findings with the product and marketing teams.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Market Research</span><span class="exp-tag">Competitor Analysis</span>
+          <span class="exp-tag">Pricing Strategy</span><span class="exp-tag">GenAI · Fashion-Tech</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-7"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">100+</span><span class="epc-label">Brands<br>Mapped</span></div></div>
+        <div class="exp-proof epc-7b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">2</span><span class="epc-label">Sectors<br>Researched</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 8. Performance & Growth Lead -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2023 —<br>2024</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type">Lead</span>
+        <div class="exp-role">Performance &amp; Growth Marketing Lead</div>
+        <div class="exp-co">Student Organisations · IIT Roorkee</div>
+        <p class="exp-desc">Handled marketing for 10+ campus events with 500–2,000 attendees. Ran WhatsApp and email campaigns, managed social posts, and helped with on-ground promotions.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Event Marketing</span><span class="exp-tag">Integrated Campaign Design</span>
+          <span class="exp-tag">On-ground Activation</span><span class="exp-tag">Campaign Analytics</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-8"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">2K+</span><span class="epc-label">Event<br>Attendees</span></div></div>
+        <div class="exp-proof epc-8b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">10+</span><span class="epc-label">Events<br>Led</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- 9. Geek Gazette -->
+    <div class="exp-row reveal-item">
+      <div class="exp-yr">2023 —<br>Present</div>
+      <div class="exp-vline"></div>
+      <div>
+        <span class="exp-type alt">Leadership</span>
+        <div class="exp-role">Finance Vertical Member</div>
+        <div class="exp-co">Geek Gazette · IIT Roorkee</div>
+        <p class="exp-desc">Handle sponsorship finances for Geek Gazette, IIT Roorkee's student media publication. Manage budgets across print, digital, and events, and coordinate with 10+ corporate sponsors.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Finance</span><span class="exp-tag">Sponsorship</span>
+          <span class="exp-tag">Budget Management</span><span class="exp-tag">Strategic Planning</span>
+        </div>
+      </div>
+      <div class="exp-visual"><div class="exp-proof-pair">
+        <div class="exp-proof epc-9"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">10+</span><span class="epc-label">Corporate<br>Sponsors</span></div></div>
+        <div class="exp-proof epc-9b"><span class="epc-bar"></span><div class="epc-body"><span class="epc-num">3</span><span class="epc-label">Content<br>Verticals</span></div></div>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="s-shell" id="skills">
+  <div class="s-sidebar"><span>Skills</span></div>
+  <div class="s-inner">
+    <p class="s-label">// Skills</p>
+    <h2 class="s-heading">What I can<br>help <em>with.</em></h2>
+    <div class="skills-grid">
+
+      <!-- Digital Marketing -->
+      <div class="skill-group">
+        <div class="skill-group-accent" style="background:#4a90d9"></div>
+        <div class="skill-group-title">Digital Marketing</div>
+        <div class="skill-group-tags">
+          <span class="skill-pill">Meta Ads</span>
+          <span class="skill-pill">Google Ads</span>
+          <span class="skill-pill">Email Marketing</span>
+          <span class="skill-pill">SEO</span>
+          <span class="skill-pill">SEM</span>
+          <span class="skill-pill">Performance Marketing</span>
+          <span class="skill-pill">Retargeting</span>
+          <span class="skill-pill">A/B Testing</span>
+          <span class="skill-pill">Funnel Optimization</span>
+          <span class="skill-pill">Lead Generation</span>
+          <span class="skill-pill">Marketing Automation</span>
+        </div>
+      </div>
+
+      <!-- Content & Branding -->
+      <div class="skill-group">
+        <div class="skill-group-accent" style="background:#5aad7a"></div>
+        <div class="skill-group-title">Content & Branding</div>
+        <div class="skill-group-tags">
+          <span class="skill-pill">Social Media Strategy</span>
+          <span class="skill-pill">Copywriting</span>
+          <span class="skill-pill">Scriptwriting</span>
+          <span class="skill-pill">Canva Design</span>
+          <span class="skill-pill">Video Editing</span>
+          <span class="skill-pill">Reels & Shorts</span>
+          <span class="skill-pill">Brand Positioning</span>
+          <span class="skill-pill">Content Calendar Planning</span>
+          <span class="skill-pill">Creative Direction</span>
+        </div>
+      </div>
+
+      <!-- Analytics & Research -->
+      <div class="skill-group">
+        <div class="skill-group-accent" style="background:#e08030"></div>
+        <div class="skill-group-title">Analytics & Research</div>
+        <div class="skill-group-tags">
+          <span class="skill-pill">Google Analytics</span>
+          <span class="skill-pill">Google Tag Manager</span>
+          <span class="skill-pill">Market Research</span>
+          <span class="skill-pill">Competitor Analysis</span>
+          <span class="skill-pill">Campaign Tracking</span>
+          <span class="skill-pill">Consumer Behavior Analysis</span>
+          <span class="skill-pill">Looker Studio</span>
+          <span class="skill-pill">Attribution Modeling</span>
+          <span class="skill-pill">UTM Tracking</span>
+        </div>
+      </div>
+
+      <!-- Business & Sales -->
+      <div class="skill-group">
+        <div class="skill-group-accent" style="background:#c04a4a"></div>
+        <div class="skill-group-title">Business & Sales</div>
+        <div class="skill-group-tags">
+          <span class="skill-pill">CRM Management</span>
+          <span class="skill-pill">HubSpot</span>
+          <span class="skill-pill">Zoho</span>
+          <span class="skill-pill">Salesforce</span>
+          <span class="skill-pill">Email Sequences</span>
+          <span class="skill-pill">Sales Funnels</span>
+          <span class="skill-pill">Cold Calling</span>
+          <span class="skill-pill">Cold Emailing</span>
+          <span class="skill-pill">B2B Acquisition</span>
+          <span class="skill-pill">Client Relationship Management</span>
+          <span class="skill-pill">Pricing Strategy</span>
+          <span class="skill-pill">Unit Economics</span>
+        </div>
+      </div>
+
+      <!-- Tools & Tech -->
+      <div class="skill-group">
+        <div class="skill-group-accent" style="background:#8a4ac4"></div>
+        <div class="skill-group-title">Tools & Tech</div>
+        <div class="skill-group-tags">
+          <span class="skill-pill">Canva</span>
+          <span class="skill-pill">Brevo</span>
+          <span class="skill-pill">Zoho</span>
+          <span class="skill-pill">Zapier</span>
+          <span class="skill-pill">Make</span>
+          <span class="skill-pill">Shopify (basics)</span>
+          <span class="skill-pill">WordPress / Webflow</span>
+          <span class="skill-pill">Landing Page Builders</span>
+          <span class="skill-pill">WhatsApp Broadcasting</span>
+          <span class="skill-pill">Mailchimp</span>
+          <span class="skill-pill">Google Tag Manager</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div>
+      <span class="footer-cta-label">// Open to Opportunities</span>
+      <h2 class="footer-cta-heading">Open to<br><em>opportunities.</em></h2>
+      <p class="footer-cta-sub">Looking for marketing internships, freelance projects, or collaborations. Feel free to reach out.</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:deepshikha_r@me.iitr.ac.in" class="f-link">
+        <div class="f-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div>
+        <div class="f-link-info"><span class="f-link-label">Email</span><span class="f-link-val">deepshikha_r@me.iitr.ac.in</span></div>
+        <span class="f-link-arr">↗</span>
+      </a>
+      <a href="tel:+919368950055" class="f-link">
+        <div class="f-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.8a19.79 19.79 0 01-3.07-8.58A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14z"/></svg></div>
+        <div class="f-link-info"><span class="f-link-label">Phone</span><span class="f-link-val">+91 93689 50055</span></div>
+        <span class="f-link-arr">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/deepshikha-raj-312a792a5/" target="_blank" class="f-link">
+        <div class="f-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div class="f-link-info"><span class="f-link-label">LinkedIn</span><span class="f-link-val">deepshikha-raj</span></div>
+        <span class="f-link-arr">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span class="footer-base-name">Deepshikha Raj</span>
+    <span class="footer-base-copy">© 2026 · Brand Strategy &amp; Partnerships · IIT Roorkee</span>
+  </div>
+</footer>
+<script>
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function anim(){
+  cursor.style.left=mx+'px';cursor.style.top=my+'px';
+  rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(anim);
+})();
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal-item,.exp-row').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
